@@ -68,5 +68,28 @@ In the end, the program is processed into
 
 ### 1
 
+The following are the array related constraints.
 
+```
+{E1, ..., En}: [E1] = ... = [En] ^ [{E1, ..., En}] = [E1][]
+E1[E2]: [E1] = [E1[E2]][] ^ [E2] = int
+E1[E2] = E3: [E1] = [E3][] ^ [E2] = int
+```
 
+The first type containt is for array construction. Since the array type is formed with a specific sub-type, every element in the array construction must belong to that same type. Therefore, their type variables are unified in chain. Correspondingly, the type of the constructor should be the array of this specific type which can be represented by any of the elment as they are the same. The type of the first element `E1` is chosen to represent it.
+
+The second contraint is for element read. The index `E2` must be an integer. The type of the array `E1` must be an array type of this element read `E1[E2]`.
+
+The third constraint is for element write. Again, the index `E2` is for sure an integer. The type of the array `E1` must be an array type of the type of the value `E3` to which its element `E1[E2]` is going to be assigned. However, this constraint is optional, because it is basically a combination of the ordinary assignment constraint and above element read constraint. The assignment leads to `[E1[E2]] = [E3]` and the element read has `[E1] = [E1[E2]][]`, so they can produce `[E1] = [E3][]`.
+
+### 2
+
+The types of the variables in the sample program are shown in below:
+```
+var x: int[], y: int, z: int[][], t: int[];
+x = {2,4,8,16,32,64};
+y = x[x[3]];
+z = {{},x};
+t = z[1];
+t[2] = y;
+```
