@@ -4,11 +4,11 @@
 
 The implementation is tested by analyzing several Tip's build-in examples and manually verifying the outputs. The primary test case we use is the example dedicated for liveness analysis *liveness.tip*, which is also the sample used in the SPA textbook (page 59). The output control flow graph is shown below, which aligns with the solution given in the book.
 
-<img src="./liveness_livevars.png" width="500px" />
+<img src="./liveness_livevars.png" width="400px" />
 
 The above example has covered all the constraint rules implemented. Here we test one more example *fib.tip* which has multiple functions to verify function variables. It is also selected because it has no pointers. The graph is shown below and the result is reasonable.
 
-<img src="./fig_livevars.png" width="700px" />
+<img src="./fig_livevars.png" width="600px" />
 
 ## Part 2
 
@@ -36,7 +36,7 @@ Again, the implementation is tested through running Tip's build-in examples and 
 
 We also include another test case with multiple functions *apply2.tip*. Its graph is attached below and we believe the result is accurate.
 
-<img src="./apply2_reaching.png" width="700px" />
+<img src="./apply2_reaching.png" width="600px" />
 
 ## Part 3
 
